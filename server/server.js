@@ -5,13 +5,15 @@ const controller = require('./controller');
 const router = express.Router();
 const app = express();
 const PORT = 3000;
+const cors = require('cors')
 
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(cors());
 
 // Build file
 app.use('/build', express.static(path.join(__dirname, '../build')));
-app.use('/', express.static(path.join(__dirname, '../client/')));
+app.use('/', express.static(path.join(__dirname, '../index.html')));
 
 app.use('/api/user', userRouter);
 
@@ -27,9 +29,9 @@ router.get('/dogs', controller.getAllDogs, (req, res) => {
     return res.status(200).json(res.locals.listOfDogs);
 });
 
-app.get('/*', (req, res) => {
-    res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
-});
+// app.get('/*', (req, res) => {
+//     res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
+// });
 
 
 

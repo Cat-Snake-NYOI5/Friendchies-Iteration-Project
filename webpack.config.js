@@ -5,15 +5,14 @@ module.exports = {
   mode: process.env.NODE_ENV,
   entry: './client/index.js',
   output: {
-    path: path.resolve(__dirname, './build'),
-    publicPath: '/',
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
   },
-  plugins: [new HtmlWebpackPlugin({ template: './index.html' })],
+  plugins: [new HtmlWebpackPlugin({ title: "development", template: path.join(__dirname, 'index.html') })],
   module: {
     rules: [
       {
-        test: /.(js|jsx)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -39,9 +38,10 @@ module.exports = {
   },
   devServer: {
     port: 8080,
-    proxy: {
-      '/api/**': 'http://localhost:3000',
-    },
+    proxy: [{
+      context:['/api'],
+      target: 'http://localhost:3000'
+    }],
     historyApiFallback: true,
   }
 };
