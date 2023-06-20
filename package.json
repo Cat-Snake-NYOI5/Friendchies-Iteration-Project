@@ -1,12 +1,12 @@
 {
-  "name": "friendchies",
+  "name": "hawt-dog-iteration-project",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "./client/index.js",
   "scripts": {
-    "start": "node server/server.js",
-    "build": "NODE_ENV='production' webpack",
-    "dev": "NODE_ENV='development' webpack serve --open & nodemon server/server.js",
+    "start": "NODE_ENV=production nodemon server/server.js",
+    "build": "NODE_ENV=production webpack",
+    "dev": "NODE_ENV=development webpack serve --open & nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -24,8 +24,10 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
+    "nodemon": "^2.0.22",
     "pg": "^8.11.0",
     "postgres": "^3.3.5",
     "react": "^18.2.0",
