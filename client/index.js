@@ -6,7 +6,7 @@ import store from './store'; // Import createStore from Redux
 
 import App from './App';
 import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
+import SignupPage from './pages/SignupPage.jsx';
 import MatchPage from './pages/MatchPage';
 import SwipePage from './pages/SwipePage';
 

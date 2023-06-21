@@ -5,6 +5,7 @@ export const userSlice = createSlice({
   initialState: {
     user: null,
   },
+
   reducers: {
     //state -- update the initial state
     //action -- data that is passed by payload
