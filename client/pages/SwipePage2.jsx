@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { ACTION } from '../features/matchSlice'
+// import { ACTION } from '../features/matchSlice'
 
 const SwipePage = () => {
   const matches = useSelector((state) => state.matches);
   const useDispatch = useDispatch();
 
-  const
+
 
   return (
     <div className="container">
