@@ -6,24 +6,28 @@ const userController = {};
 
 // Sign up a new user
 userController.createUser = async (req, res, next) => {
-  try {
-    const { username, password } = req.body;
+  // adding condition to make sure that a request with content was sent. 
+  if (req.body.username.length && req.body.password.length) {
+    try {
+      const { username, password } = req.body;
 
-    const createUserSQL = `INSERT INTO Login (username, password) VALUES ($1, $2) RETURNING id`;
+      const createUserSQL = `INSERT INTO Login (username, password) VALUES ($1, $2) RETURNING id`;
 
-    const response = await db.query(createUserSQL, [username, password]);
-    console.log(response);
+      const response = await db.query(createUserSQL, [username, password]);
+      console.log(response);
 
-    res.locals.user = response.rows[0].id// send my id back
-    return next();
-  } catch (err) {
-    return next(err);
+      res.locals.user = response.rows[0].id// send my id back
+      return next();
+    } catch (err) {
+      return next(err);
+    }
   }
 };
-//login an existing user 
+//login an existing user
 userController.verifyUser = async (req, res, next) => {
   try {
     const { username, password } = req.body;
+    console.log('IN MIDDLEWARE', req.body);
     const params = [username, password];
     const verifyUserSQL = 'SELECT id FROM Login WHERE (username = $1 AND password = $2)'
     const response = await db.query(verifyUserSQL, [username, password]);

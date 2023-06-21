@@ -15,26 +15,29 @@ export default function LoginPage() {
 
     //post request to database
     try {
-      await axios.post('/api/login', {
-        name: name,
+       const result = await axios.post('http://localhost:3000/api/user/login', {
+        username: name,
         password: password,
       });
-
-      dispatch(
-        login({
-          name: name,
-          password: password,
-          loggedIn: true,
-        })
-      );
+      //only dispatch to redux if successful login
+      if (result) {
+          dispatch(
+            login({
+              name: name,
+              password: password,
+              id: result.data,
+              loggedIn: true,
+            })
+            );
+          }
     } catch (error) {
-      console.log('Login failed', error);
-    }
-  };
+        console.log('Login failed', error);
+      }
+    };
 
-  const registerHandle = (e) => {
-    console.log(name, password);
-  };
+  // const registerHandle = (e) => {
+  //   console.log(name, password);
+  // };
 
   return (
     <div className='login'>
@@ -58,7 +61,7 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={registerHandle} type='submit' className='submit-btn'>
+        <button type='submit' className='submit-btn'>
           Submit
         </button>
       </form>

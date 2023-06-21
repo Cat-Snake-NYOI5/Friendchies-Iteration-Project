@@ -2,15 +2,16 @@ import React from 'react';
 import LoginPage from './pages/LoginPage';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
-import SwipePage from './pages/SwipePage';
+import SwipePage2 from './pages/SwipePage2.jsx';
 
 export default function App() {
-  // const user = useSelector(selectUser);
+  const user = useSelector(selectUser);
+  console.log(user);
 
-  // return <div>{user ? <SwipePage /> : <LoginPage />}</div>;
-  return (
-    <div>
-      <LoginPage />
-    </div>
-  );
+  return <div>{user ? <SwipePage2 /> : <LoginPage />}</div>;
+  // return (
+  //   <div>
+  //     <LoginPage />
+  //   </div>
+  // );
 }
