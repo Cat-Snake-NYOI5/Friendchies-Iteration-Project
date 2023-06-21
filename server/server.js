@@ -18,14 +18,12 @@ app.use(cors());
 app.use("/build", express.static(path.join(__dirname, "../build")));
 app.use("/", express.static(path.join(__dirname, "../index.html")));
 
-<<<<<<< HEAD
 app.use("/swipe", swipeRouter);
 
 app.use("/api/user", userRouter);
-=======
-app.use('/api/user', userRouter);
+// n
 app.use('/api/matches', matchRouter);
->>>>>>> dev
+
 
 // Add this line to include the router
 app.use("/api", router);

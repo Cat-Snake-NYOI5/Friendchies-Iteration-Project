@@ -4,12 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 
 const SwipePage = () => {
   const matches = useSelector((state) => state.matches);
-  const useDispatch = useDispatch();
+  const dispatch = useDispatch();
 
 
 
   return (
     <div className="container">
+      <h1>'Header'</h1>
       <div className="profile-pic">
 
       </div>
