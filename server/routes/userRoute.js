@@ -1,18 +1,14 @@
 const express = require("express");
 const userController = require("../controllers/userController");
+const cookieController = require("../controllers/cookieController")
 const router = express.Router();
 
-// router.post("/signup", userController.createUser, (req, res) => {
-//   res.status(200).send(res.locals.user);
-// });
 
-// module.exports = router;
-
-router.post('/signup', userController.createUser, (req, res) => {
-    res.status(200).json(res.locals.user);
+router.post('/signup', userController.createUser, cookieController.setCookie, (req, res) => {
+  res.status(200).json(res.locals.user);
 })
 
 router.post('/login', userController.verifyUser, (req, res) => {
-    res.status(200).json(res.locals.user);
+  res.status(200).json(res.locals.user);
 })
 module.exports = router;
