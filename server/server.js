@@ -5,6 +5,7 @@ const swipeRouter = require("./routes/swipeRouter");
 
 const matchController = require("./controllers/matchController");
 const router = express.Router();
+const matchRouter = require('./routes/matchRoute');
 const app = express();
 const PORT = 3000;
 const cors = require("cors");
@@ -17,9 +18,14 @@ app.use(cors());
 app.use("/build", express.static(path.join(__dirname, "../build")));
 app.use("/", express.static(path.join(__dirname, "../index.html")));
 
+<<<<<<< HEAD
 app.use("/swipe", swipeRouter);
 
 app.use("/api/user", userRouter);
+=======
+app.use('/api/user', userRouter);
+app.use('/api/matches', matchRouter);
+>>>>>>> dev
 
 // Add this line to include the router
 app.use("/api", router);

@@ -9,3 +9,65 @@
 
 .swipeCardIm {
 }
+
+/* Body style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(232, 232, 232);
+}
+
+/* logo */
+.logo {
+  display: block;
+  font-size: 60px;
+  padding-bottom: 150px;
+  /* width: 200px;
+  height: auto; */
+}
+
+/* Login style */
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form > h1 {
+  font-size: 35px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+.login-form > input {
+  min-width: 380px;
+  padding: 20px 0;
+  padding-left: 15px;
+  margin-bottom: 10px;
+  outline: none;
+  border: 1px solid rgb(0, 0, 0, 0.24);
+  border-radius: 12px;
+  font-size: 15px;
+}
+
+.submit-btn {
+  padding: 17px 30px;
+  margin-top: 10px;
+  background: black;
+  border: none;
+  color: white;
+  font-size: 14px;
+  border-radius: 12px;
+}
