@@ -1,10 +1,14 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+
 // import { ACTION } from '../features/matchSlice'
 
 const SwipePage = () => {
   const matches = useSelector((state) => state.matches);
+  const id = useSelector((state) => state.user.user.id);
   const dispatch = useDispatch();
+  console.log('ID FROM SWIPE COMPONENT', id);
+
 
 
 
@@ -23,17 +27,17 @@ const SwipePage = () => {
       <button
         className="goBack"
         onClick={() => handleBack(FILLER)}
-        > back </button>
+        > previous </button>
       <button className="goForward"
         onClick={() => handleForward(FILLER)}
-        ></button>
+        >next</button>
       <button
         className="dislike"
         onClick={() => handleDislike(FILLER)}
-        ></button>
+        >dislike</button>
       <button className="like"
-        onCanPlay={() => handleLike(FILLER)}
-        ></button>
+        onClick={() => handleLike(FILLER)}
+        >like</button>
     </div>
   )
 }

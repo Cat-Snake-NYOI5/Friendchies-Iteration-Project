@@ -6,6 +6,7 @@ import SwipePage2 from './pages/SwipePage2.jsx';
 
 export default function App() {
   const user = useSelector(selectUser);
+  console.log(user);
 
   return <div>{user ? <SwipePage2 /> : <LoginPage />}</div>;
   // return (

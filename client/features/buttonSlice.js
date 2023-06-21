@@ -7,7 +7,7 @@ const buttonSlice = createSlice({
   initialState,
   reducers: {
     goBack (state, action) {
-      state.
+
     },
     goForward (state, action) {
 
