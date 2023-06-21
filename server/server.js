@@ -3,6 +3,8 @@ const path = require("path");
 const userRouter = require("./routes/userRoute");
 const swipeRouter = require("./routes/swipeRouter");
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const cookieController = require("./controllers/cookieController");
 
 const matchController = require("./controllers/matchController");
 const router = express.Router();
@@ -16,9 +18,19 @@ app.use(express.urlencoded());
 app.use(cors());
 app.use(cookieParser());
 
+// session https://www.npmjs.com/package/connect-pg-simple
+app.use(session({
+  store: new (require('connect-pg-simple')(session))({
+  }),
+  secret: 'JWVduNcvPd9wNF5lt/rQc7cv4', // equivalent to a random SALT
+  resave: false,
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+  //Cookies can be set with an “expiry date”, and that is given in milliseconds. Days * 24 * 60 * 60 * 1000 is therefore the milliseconds in a day – 1000 milliseconds * 60 seconds * 60 minutes * 24 hours * days
+}));
+
 // Build file
 app.use("/build", express.static(path.join(__dirname, "../build")));
-app.use("/", express.static(path.join(__dirname, "../index.html")));
+app.use("/", cookieController.setCookie, express.static(path.join(__dirname, "../index.html")));
 
 
 app.use("/swipe", swipeRouter);
