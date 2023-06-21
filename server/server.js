@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const userRouter = require("./routes/userRoute");
 const swipeRouter = require("./routes/swipeRouter");
+const cookieParser = require('cookie-parser');
 
 const matchController = require("./controllers/matchController");
 const router = express.Router();
@@ -13,19 +14,14 @@ const cors = require("cors");
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
+app.use(cookieParser());
 
 // Build file
 app.use("/build", express.static(path.join(__dirname, "../build")));
 app.use("/", express.static(path.join(__dirname, "../index.html")));
 
-<<<<<<< HEAD
-app.use("/swipe", swipeRouter);
-
-app.use("/api/user", userRouter);
-=======
 app.use('/api/user', userRouter);
 app.use('/api/matches', matchRouter);
->>>>>>> dev
 
 // Add this line to include the router
 app.use("/api", router);
