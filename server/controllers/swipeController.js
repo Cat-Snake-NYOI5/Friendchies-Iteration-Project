@@ -23,25 +23,28 @@ swipeController.getdogs = (req, res, next) => {
 };
 
 swipeController.likeDog = (req, res, next) => {
+  console.log("likeDo");
   const { giver_id, receiver_id } = req.body;
+  const values = [giver_id, receiver_id, true];
   //the table name may need to be in title Profile
-  const likeDog = `INSERT INTO profile (giver_id,receiver_id,liked)
-  VALUES ($1, $2, true)`;
-  db.query(likeDog, giver_id, receiver_id)
+  const likeDog = `INSERT INTO Viewed (giver_id,receiver_id,liked)
+  VALUES ($1, $2, $3)`;
+  db.query(likeDog, values)
     .then(() => {
       res.locals.listOfDogs = { like: true };
+      console.log("exiting likeDog");
       return next();
     })
-    .catch(({ message: { err: "error middleware likeDog" } }) => {
-      return next(err);
+    .catch((err) => {
+      return next({ message: { err: "like" } });
     });
 };
 
 swipeController.dislikeDog = (req, res, next) => {
   const { giver_id, receiver_id } = req.body;
   const dislikeDog = `INSERT INTO Viewed (giver_id,receiver_id,liked)
-  VALUES ($1, $2, false)`;
-  db.query(dislikeDog, giver_id, receiver_id)
+  VALUES ($1, $2, $3)`;
+  db.query(dislikeDog, [giver_id, receiver_id, false])
     .then(() => {
       res.locals.listOfDogs = { dislike: true };
       return next();
