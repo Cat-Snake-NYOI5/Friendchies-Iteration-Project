@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 const SwipeComponent = () => {
     const potentialmatches = useSelector(state => state.button.potentialmatches);
     const index = useSelector(state => state.button.index);
-    const { dog_name, owner_name, zip, breed, age, gender, image_url, isfixed, size, biography } = potentialmatches[index];
+    // const { dog_name, owner_name, zip, breed, age, gender, image_url, isfixed, size, biography } = potentialmatches[index];
     console.log('THIS IS THE POTENTIAL MATCHES AT INDEX', potentialmatches[index]);
     return (
       <div className="container">
