@@ -3,19 +3,21 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage.jsx';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
-import SwipePage2 from './pages/SwipePage2.jsx';
+import SwipePage from './pages/SwipePage.jsx';
 import { Routes, Route } from 'react-router-dom'
+import Navbar from './Navbar.jsx';
 
 const App = () => {
   const user = useSelector(selectUser);
-  console.log(user);
 
   return (
     <div>
+      <Navbar></Navbar>
+      <div>
       <Routes>
         <Route
           path="/"
-          element={<LoginPage></LoginPage>}
+          element={user != null ? <SwipePage /> : <LoginPage />}
         ></Route>
         <Route
           path="/signup"
@@ -23,10 +25,10 @@ const App = () => {
         ></Route>
         <Route
           path="/swipe"
-          element={<SwipePage2></SwipePage2>}
+          element={<SwipePage></SwipePage>}
         ></Route>
-
-      </Routes>
+        </Routes>
+      </div>
     </div>)
 }
       {/*// <div>

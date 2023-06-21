@@ -5,7 +5,7 @@ const swipeController = {};
 
 swipeController.getdogs = (req, res, next) => {
   //req.query.id TBD
-  const id = [req.query.id];
+  const id = [req.params.id];
   const getdogs = `SELECT * FROM profile 
   LEFT OUTER JOIN viewed 
   ON profile.id = giver_id 
