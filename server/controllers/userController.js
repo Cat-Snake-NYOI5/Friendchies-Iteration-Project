@@ -23,10 +23,11 @@ userController.createUser = async (req, res, next) => {
     }
   }
 };
-//login an existing user 
+//login an existing user
 userController.verifyUser = async (req, res, next) => {
   try {
     const { username, password } = req.body;
+    console.log('IN MIDDLEWARE', req.body);
     const params = [username, password];
     const verifyUserSQL = 'SELECT id FROM Login WHERE (username = $1 AND password = $2)'
     const response = await db.query(verifyUserSQL, [username, password]);

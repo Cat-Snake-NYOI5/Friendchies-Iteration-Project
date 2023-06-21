@@ -15,8 +15,8 @@ export default function LoginPage() {
 
     //post request to database
     try {
-      await axios.post('/api/login', {
-        name: name,
+      await axios.post('http://localhost:3000/api/user/login', {
+        username: name,
         password: password,
       });
 
