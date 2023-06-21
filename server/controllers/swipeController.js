@@ -4,9 +4,11 @@ const db = require("../dbModel.js");
 const swipeController = {};
 
 swipeController.getdogs = (req, res, next) => {
-  //req.query.id TBD
-  const id = [req.query.id];
+
+  const id = [req.params.id];
+
   //the table name may need to be in title Profile
+
   const getdogs = `SELECT * FROM profile 
   LEFT OUTER JOIN viewed 
   ON profile.id = giver_id 
