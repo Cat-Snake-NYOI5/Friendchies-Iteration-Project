@@ -2,6 +2,29 @@ const { query, json } = require('express');
 const matchController = {};
 const db = require('../dbModel');
 
+matchController.getMatch = async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const params = [id];
+    const getAllMatches = `SELECT Profile.id, Profile.dog_name, Profile.zip, Profile.breed, Profile.size, Profile.age, Profile.phone_number, Profile.gender, Profile.image_url, Profile.isfixed, Profile.biography
+    FROM Profile
+    LEFT JOIN Viewed
+    ON Profile.id = Viewed.receiver_id OR Profile.id= Viewed.giver_id
+    WHERE Viewed.receiver_id = $1 AND Viewed.liked = 'true' AND NOT Profile.id = $1 OR Viewed.giver_id = $1 AND Viewed.liked = 'true' AND NOT Profile.id = $1
+    GROUP BY id`
+    const listofMatches = await db.query(getAllMatches, params);
+    console.log(listofMatches);
+    res.locals.listofMatches = listofMatches.rows;
+    next();
+  }
+  catch (err) {
+    const errorObj = Object.assign(err, {log: "Error in MatchController.getMatch" });
+    return next(errorObj);
+  }
+}
+
+
+
 matchController.getAllDogs = async (req, res, next) => {
   try {
     const getAllDogs = `SELECT * FROM Profile`;
@@ -51,18 +74,6 @@ matchController.getPotentialMatches = async (req, res, next) => {
   } catch (err) {
     return next(err);
   }
-}
-
-matchController.addToUserLikes = async (req, res, next) => {
-
-}
-
-matchController.checkForMatch = async (req, res, next) => {
-
-}
-
-matchController.updateMatch = async (req, res, next) => {
-
 }
 
 
