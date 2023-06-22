@@ -1,11 +1,10 @@
-const express = require("express");
-const createProfileController = require("../controllers/createProfileController");
-const swipeController = require("../controllers/swipeController");
+const express = require('express');
+const createProfileController = require('../controllers/createProfileController');
+const swipeController = require('../controllers/swipeController');
 const createProfileRouter = express.Router();
 
-
 createProfileRouter.post(
-  "/createprofile", // changed from '/'
+  '/', // changed from '/'
   createProfileController.newProfile,
   swipeController.likeDog,
   (req, res) => {

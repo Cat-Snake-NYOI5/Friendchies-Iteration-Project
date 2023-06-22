@@ -1,11 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { dogName, ownerName, zip, breed, size, age, phone, gender, image, fixed, biography } from '../features/createProfileSlice';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  dogName,
+  ownerName,
+  zip,
+  breed,
+  size,
+  age,
+  phone,
+  gender,
+  image,
+  fixed,
+  biography,
+} from '../features/createProfileSlice';
 import '../style.css';
 import axios from 'axios';
 
 export default function userInput() {
   const dispatch = useDispatch();
+  // const dogNameValue = useSelector((state) => state.createProfile.dog_name);
+  // const ownerNameValue = useSelector((state) => state.createProfile.owner_name);
+  // const phoneNum = useSelector((state) => state.createProfile.phone_number);
   // const onSubmit = (data) => {
   //   dispatch(createProf(data));
   // };
@@ -50,104 +65,110 @@ export default function userInput() {
     // }
     try {
       const result = await axios.post('http://localhost:3000/createprofile', {
-        dog_name: dog_name,
-        owner_name: owner_name,
+        dog_name: dogName,
+        owner_name: ownerName,
         zip: zip,
         breed: breed,
         size: size,
         age: age,
-        phone_number: phone_number,
+        phone_number: phone,
         gender: gender,
-        image_url: image_url,
-        isfixed: isfixed,
+        image_url: image,
+        isfixed: fixed,
         biography: biography,
-     });
-     console.log('this is my fetch', result)
+      });
+      console.log('this is my fetch', result);
 
-     if (result) {
-         dispatch(
-           profile({
-            dog_name: dog_name,
-            owner_name: owner_name,
-            zip: zip,
-            breed: breed,
-            size: size,
-            age: age,
-            phone_number: phone_number,
-            gender: gender,
-            image_url: image_url,
-            isfixed: isfixed,
-            biography: biography,
-             id: result.data,
-           })
-           );
-         }
-   } catch (error) {
-       console.log('This is an error', error);
-     }
-  }
+      if (result) {
+        dispatch(dogName({ dog_name: dogName }));
+        dispatch(ownerName({ owner_name: ownerName }));
+        dispatch(zip({ zip: zip }));
+        dispatch(breed({ breed: breed }));
 
+        dispatch(size({ size: size }));
+        dispatch(age({ age: age }));
+        dispatch(phone({ phone_number: phone }));
+        dispatch(gender({ gender: gender }));
+        dispatch(image({ image_url: image }));
+        dispatch(fixed({ isfixed: fixed }));
+        dispatch(bio({ biography: biography }));
+        // id: result.data,
+      }
+    } catch (error) {
+      console.log('This is an error', error);
+    }
+  };
 
   return (
     <div className='userProfile'>
-      <form className='profile' onSubmit={(e) =>handleChange(e)}>
+      <form className='profile' onSubmit={(e) => handleChange(e)}>
         <input
-          type='dog_name'
+          type='name'
           placeholder='Dog Name'
           // value={dog_name}
-          onChange={(e)=> dispatch(dogName(e.target.value))}
-          /><br></br>
+          onChange={(e) => dispatch(dogName(e.target.value))}
+        />
+        <br></br>
         <input
-          type='ownerName'
+          type='name'
           placeholder='Owner Name'
-          onChange={(e)=> dispatch(ownerName(e.target.value))}
-          /><br></br>
+          onChange={(e) => dispatch(ownerName(e.target.value))}
+        />
+        <br></br>
         <input
-          type='zipcode'
+          type='number'
           placeholder='Zipcode'
-          onChange={(e)=> dispatch(zip(e.target.value))}
-          /><br></br>
+          onChange={(e) => dispatch(zip(e.target.value))}
+        />
+        <br></br>
         <input
-          type='breed'
+          type='string'
           placeholder='Breed'
-          onChange={(e)=> dispatch(breed(e.target.value))}
-          /><br></br>
+          onChange={(e) => dispatch(breed(e.target.value))}
+        />
+        <br></br>
         <input
-          type='size'
+          type='text'
           placeholder='Size'
           onChange={(e) => dispatch(size(e.target.value))}
-          /><br></br>
+        />
+        <br></br>
         <input
-          type='age'
+          type='number'
           placeholder='Age'
           onChange={(e) => dispatch(age(e.target.value))}
-          /><br></br>
+        />
+        <br></br>
         <input
-          type='phoneNumber'
+          type='number'
           placeholder='Phone Number'
           onChange={(e) => dispatch(phone(e.target.value))}
-          /><br></br>
+        />
+        <br></br>
         <input
-          type='gender'
+          type='text'
           placeholder='Gender'
           onChange={(e) => dispatch(gender(e.target.value))}
-          /><br></br>
+        />
+        <br></br>
         <input
-          type='dogimage'
+          type='text'
           placeholder='Image'
           onChange={(e) => dispatch(image(e.target.value))}
-          /><br></br>
+        />
+        <br></br>
         <input
-          type='isFixed'
+          type='boolean'
           placeholder='Fixed?'
-          onChange={(e)=> dispatch(fixed(e.target.value))}
-          /><br></br>
+          onChange={(e) => dispatch(fixed(e.target.value))}
+        />
+        <br></br>
         <input
-          type='biography'
+          type='text'
           placeholder='Biography'
-          onChange={(e)=> dispatch(biography(e.target.value))}
-          /><br></br>
-
+          onChange={(e) => dispatch(biography(e.target.value))}
+        />
+        <br></br>
 
         <button type='submit' className='submit-btn'>
           Submit
