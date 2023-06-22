@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { fetchMatches } from "../features/matchSlice";
-import MatchCard2 from "../components/matchCard2.jsx";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { fetchMatches } from '../features/matchSlice';
+import MatchCard2 from '../components/matchCard2.jsx';
 
 const MatchPage = () => {
   // const [matchState, setMatchState] = useState();
@@ -15,16 +15,19 @@ const MatchPage = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const result = await axios.get("http://localhost:3000/api/matches/" + id);
+      const result = await axios.get('http://localhost:3000/api/matches/' + id);
       console.log(result);
       dispatch(fetchMatches(result.data));
     }
     fetchData();
   }, []);
   return (
-    <div>
+    <div className='match-container'>
       <h2>List of Matches</h2>
-      <MatchCard2 />
+      <h1>🐾🐾🐾</h1>
+      <div>
+        <MatchCard2 />
+      </div>
     </div>
   );
 };

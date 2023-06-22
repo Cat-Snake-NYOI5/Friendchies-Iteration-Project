@@ -101,7 +101,7 @@ const SwipeComponent = () => {
         </div>
         <div className='btn-container'>
           <button className='goBack' onClick={() => dispatch(goBack())}>
-            {'<'} {'🐾'}
+            {'<'}&ensp; {'🐾'}
           </button>
           <button className='dislike' onClick={() => handleDislike()}>
             💔
@@ -110,8 +110,7 @@ const SwipeComponent = () => {
             ❤️
           </button>
           <button className='goForward' onClick={() => dispatch(goForward())}>
-            {'🐾'}
-            {'>'}
+            {'🐾'}&ensp;{'>'}
           </button>
         </div>
       </div>
