@@ -4,7 +4,7 @@ import SignupPage from './pages/SignupPage.jsx';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
 import SwipePage from './pages/SwipePage.jsx';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import MatchPage from './pages/MatchPage2.jsx';
 
@@ -13,8 +13,12 @@ const App = () => {
 
   return (
     <div>
-      <Navbar></Navbar>
+      <div className="nav-bar">
+        <Navbar></Navbar>
+      </div>
+
       <div>
+
       <Routes>
         <Route
           path="/"
@@ -32,17 +36,23 @@ const App = () => {
           path="/match"
           element={ user != null? <MatchPage/>: <LoginPage /> }
         ></Route>
+
         </Routes>
       </div>
-    </div>)
-}
-      {/*// <div>
+    </div>
+  );
+};
+{
+  /*// <div>
       //   {user != null ? <SwipePage2 /> : <LoginPage />}
-      // </div></> */}
-  {/* // return (
+      // </div></> */
+}
+{
+  /* // return (
   //   <div>
   //     <LoginPage />
   //   </div>
-  // ); */}
+  // ); */
+}
 
 export default App;
