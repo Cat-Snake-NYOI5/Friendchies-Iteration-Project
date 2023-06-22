@@ -41,7 +41,7 @@ app.use('/', express.static(path.join(__dirname, '../index.html')));
 
 app.use('/swipe', swipeRouter);
 
-// app.use("/createprofile", createProfileRouter);
+app.use('/createprofile', createProfileRouter);
 
 app.use('/api/user', userRouter);
 
