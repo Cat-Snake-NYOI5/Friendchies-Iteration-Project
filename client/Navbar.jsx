@@ -9,8 +9,8 @@ const Navbar = (props) => {
 
     <nav className="nav">
     {!user && <Link to='/signup'>Sign Up</Link>}
-      {user && <Link to='/swipe'></Link>}
-      {user && <Link to='/match'></Link>}
+      {user && <Link to='/swipe'>Swipe</Link>}
+      {user && <Link to='/match'>match</Link>}
       {!user && <Link to='/'>Login</Link>}
 
     </nav>
