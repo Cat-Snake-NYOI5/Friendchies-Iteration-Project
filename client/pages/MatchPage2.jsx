@@ -5,7 +5,7 @@ import { fetchMatches } from "../features/matchSlice";
 import MatchCard2 from "../components/matchCard2.jsx";
 
 const MatchPage = () => {
-  const [matchState, setMatchState] = useState("");
+  const [matchState, setMatchState] = useState();
 
   // const match = useSelector((state) => state.match.matches);
   //console.log("match state", match);

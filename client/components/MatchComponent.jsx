@@ -1,8 +1,11 @@
 import React from "react";
 
-const MatchComponent = ({dog_name, owner_name}) => {
+const MatchComponent = ({dog_name, owner_name, zip, breed, age, gender, image_url, size, biography, phone_number}) => {
     return (
-        <div>{dog_name} {owner_name}</div>
+        <div>
+            <img src = {image_url}></img>
+            {dog_name} {biography} {phone_number} {owner_name}{zip} {breed} {age} {gender} {size}
+         </div>
     )
 }
 

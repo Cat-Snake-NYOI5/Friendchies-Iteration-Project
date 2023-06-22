@@ -10,8 +10,15 @@ const MatchCard2 = () => {
   console.log(matches);
   const matchCards = matches.map((el, index) => {
     return (<MatchComponent dog_name={el.dog_name}
-      owner_name = {el.owner_name}
-
+      owner_name={el.owner_name}
+      zip={el.zip}
+      breed={el.breed}
+      age={el.age}
+      gender={el.gender}
+      image_url={el.image_url}
+      size = {el.size}
+      biography={el.biography}
+      phone_number={el.phone_number}
     
     />)
   });
