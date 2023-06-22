@@ -7,7 +7,7 @@ const db = require("../dbModel");
 createProfileController.newProfile = async (req, res, next) => {
   //const login_id = [req.query.id];
   console.log("createprofile");
-  console.log(req.body);
+  console.log('this is where req.body should be', req.body);
 
   const {
     dog_name,
