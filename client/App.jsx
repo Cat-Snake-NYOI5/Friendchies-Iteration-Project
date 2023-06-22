@@ -7,6 +7,7 @@ import SwipePage from './pages/SwipePage.jsx';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import MatchPage from './pages/MatchPage2.jsx';
+import CreateProfile from './pages/CreateProfile.jsx';
 
 const App = () => {
   const user = useSelector(selectUser);
@@ -36,7 +37,10 @@ const App = () => {
           path="/match"
           element={ user != null? <MatchPage/>: <LoginPage /> }
         ></Route>
-
+        <Route
+          path="/createprofile"
+          element={<CreateProfile></CreateProfile>}
+        ></Route>
         </Routes>
       </div>
     </div>
