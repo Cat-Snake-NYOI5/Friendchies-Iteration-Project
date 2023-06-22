@@ -1,19 +1,34 @@
-import React, { useState } from "react";
-import axios from "axios";
+
 import logo from "../img/logo.png";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { login } from '../features/userSlice';
 
 export default function SignupPage() {
-  const [userVal, setUserVal] = useState("");
-  const [passVal, setPassVal] = useState("");
+    const [userVal, setUserVal] = useState("");
+    const [passVal, setPassVal] = useState("");
+    const dispatch = useDispatch();
 
-  async function signup() {
-    console.log(userVal);
-    const response = await axios.post("/api/user/signup", {
-      username: userVal,
-      password: passVal,
-    });
-    console.log(response);
-  }
+    async function signup() {
+        const response = await axios.post('http://localhost:3000/api/user/signup', {
+            username: userVal,
+            password: passVal
+        }, {
+            withCredentials: true,
+        })
+        console.log(response);
+        if (response) {
+            dispatch(
+                login({
+                    name: userVal,
+                    password: passVal,
+                    id: response.data,
+                    loggedIn: true,
+                }));
+        }
+    };
+
 
   return (
     <div className="login">
