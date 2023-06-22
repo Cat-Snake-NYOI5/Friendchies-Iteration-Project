@@ -9,9 +9,9 @@ export default function userInput() {
   // const onSubmit = (data) => {
   //   dispatch(createProf(data));
   // };
-
   const handleChange = async (e) => {
     e.preventDefault();
+    // console.log('I am here testing create profile')
 
     // const value = e.target.value;
     // const name = e.target.name;
@@ -50,34 +50,35 @@ export default function userInput() {
     // }
     try {
       const result = await axios.post('http://localhost:3000/createprofile', {
-        dog_name: 'dog_name',
-        owner_name: 'owner_name',
-        zip: 'zip',
-        breed: 'breed',
-        size: 'size',
-        age: 'age',
-        phone_number: 'phone_number',
-        gender: 'gender',
-        image_url: 'image_url',
-        isfixed: 'isfixed',
-        biography: 'biography',
+        dog_name: dog_name,
+        owner_name: owner_name,
+        zip: zip,
+        breed: breed,
+        size: size,
+        age: age,
+        phone_number: phone_number,
+        gender: gender,
+        image_url: image_url,
+        isfixed: isfixed,
+        biography: biography,
      });
+     console.log('this is my fetch', result)
 
      if (result) {
          dispatch(
            profile({
-            dog_name: 'dog_name',
-            owner_name: 'owner_name',
-            zip: 'zip',
-            breed: 'breed',
-            size: 'size',
-            age: 'age',
-            phone_number: 'phone_number',
-            gender: 'gender',
-            image_url: 'image_url',
-            isfixed: 'isfixed',
-            biography: 'biography',
-            //  id: result.data,
+            dog_name: dog_name,
+            owner_name: owner_name,
+            zip: zip,
+            breed: breed,
+            size: size,
+            age: age,
+            phone_number: phone_number,
+            gender: gender,
+            image_url: image_url,
+            isfixed: isfixed,
+            biography: biography,
+             id: result.data,
            })
            );
          }
@@ -91,9 +92,9 @@ export default function userInput() {
     <div className='userProfile'>
       <form className='profile' onSubmit={(e) =>handleChange(e)}>
         <input
-          type='dogName'
+          type='dog_name'
           placeholder='Dog Name'
-          // value={dogName}
+          // value={dog_name}
           onChange={(e)=> dispatch(dogName(e.target.value))}
           /><br></br>
         <input
