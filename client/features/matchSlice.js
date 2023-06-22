@@ -1,15 +1,15 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
   matches: [],
 };
 
-export const fetchDogs = createAsyncThunk('ACTION TYPE', () => {
-  return axios
-    .get('http://localhost:3000/api/matches') // pull from db?
-    .then((response) => response.data);
-});
+// export const fetchDogs = createAsyncThunk('ACTION TYPE', () => {
+//   return axios
+//     .get('http://localhost:3000/api/matches') // pull from db?
+//     .then((response) => response.data);
+// });
 
 const matchSlice = createSlice({
   name: 'matches',

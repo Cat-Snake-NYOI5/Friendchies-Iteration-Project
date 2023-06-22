@@ -4,17 +4,17 @@ const db = require("../dbModel.js");
 const swipeController = {};
 
 swipeController.getdogs = (req, res, next) => {
-
+  console.log('IN CORRECT CONTROLLER')
   const id = [req.params.id];
 
   //the table name may need to be in title Profile
 
-  const getdogs = `SELECT * FROM profile 
+  const getdogs = `SELECT DISTINCT dog_name, owner_name, id, zip, breed, size, age, phone_number, gender, image_url FROM profile 
   LEFT OUTER JOIN viewed 
-  ON profile.id = giver_id 
-  WHERE viewed.giver_id != $1`;
+  ON profile.id = giver_id `
+  // WHERE viewed.giver_id != $1`;
 
-  db.query(getdogs, id)
+  db.query(getdogs)
     .then((data) => {
       res.locals.listOfDogs = data.rows;
       return next();

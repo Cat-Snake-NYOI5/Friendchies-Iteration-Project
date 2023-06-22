@@ -4,8 +4,9 @@ import SignupPage from './pages/SignupPage.jsx';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
 import SwipePage from './pages/SwipePage.jsx';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
+import MatchPage from './pages/MatchPage2.jsx';
 import CreateProfile from './pages/CreateProfile.jsx';
 
 const App = () => {
@@ -13,12 +14,16 @@ const App = () => {
 
   return (
     <div>
-      <Navbar></Navbar>
+      <div className="nav-bar">
+        <Navbar></Navbar>
+      </div>
+
       <div>
+
       <Routes>
         <Route
           path="/"
-          element={user != null ? <SwipePage /> : <LoginPage />}
+          element={user != null ?  <SwipePage /> : <LoginPage />}
         ></Route>
         <Route
           path="/signup"
@@ -26,7 +31,11 @@ const App = () => {
         ></Route>
         <Route
           path="/swipe"
-          element={<SwipePage></SwipePage>}
+          element={ user? <SwipePage></SwipePage>: <LoginPage /> }
+          ></Route>
+           <Route
+          path="/match"
+          element={ user != null? <MatchPage/>: <LoginPage /> }
         ></Route>
         <Route
           path="/createprofile"
@@ -34,15 +43,20 @@ const App = () => {
         ></Route>
         </Routes>
       </div>
-    </div>)
-}
-      {/*// <div>
+    </div>
+  );
+};
+{
+  /*// <div>
       //   {user != null ? <SwipePage2 /> : <LoginPage />}
-      // </div></> */}
-  {/* // return (
+      // </div></> */
+}
+{
+  /* // return (
   //   <div>
   //     <LoginPage />
   //   </div>
-  // ); */}
+  // ); */
+}
 
 export default App;

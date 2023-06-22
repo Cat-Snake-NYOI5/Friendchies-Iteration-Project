@@ -4,39 +4,39 @@
   padding: 0;
 }
 
-.card {
+/* .card {
 }
 
 .swipeCardIm {
-}
+} */
 
 /* Body style */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
+  line-height: 1.3em;
 }
 
 body {
   background: rgb(232, 232, 232);
 }
 
-/* logo */
-.logo {
-  display: block;
-  font-size: 60px;
-  padding-bottom: 150px;
-  /* width: 200px;
-  height: auto; */
-}
-
 /* Login style */
 .login {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 100vh;
+  justify-content: space-around;
+  height: 80vh;
   align-items: center;
+}
+/* logo */
+.logo {
+  display: flex;
+  font-size: 60px;
+  width: 500px;
+  height: auto;
 }
 
 .login-form {
@@ -70,4 +70,120 @@ body {
   color: white;
   font-size: 14px;
   border-radius: 12px;
+}
+
+/* Nav bar */
+
+.nav-bar {
+  display: flex;
+  background: black;
+  height: 5vh;
+  justify-content: flex-end;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav > a {
+  color: white;
+  padding: 0 30px 0 0;
+  border: none;
+  text-decoration: none;
+}
+
+/* swipe profile */
+
+.container {
+  /* padding-top: 20px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 60%;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pet-name {
+  font-size: 4rem;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.profile-pic > img {
+  width: 30vw;
+  /* border-radius: 1em; */
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+  width: 50vw;
+  padding-top: 20px;
+}
+
+.btn-container > button {
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+  padding-top: 20px;
+}
+
+.goBack,
+.goForward {
+  background: none;
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.goBack:hover,
+.goForward:hover {
+  color: #aaaaaa;
+}
+
+.like,
+.dislike {
+  font-size: 2em;
+  font-weight: 10;
+}
+
+.like {
+  background-color: rgb(255, 137, 101);
+  box-shadow: 2px 2px #c0c0c0;
+}
+.like:hover {
+  background-color: rgb(252, 97, 50);
+}
+
+.dislike {
+  background-color: rgb(146, 146, 146);
+  box-shadow: 2px 2px #c0c0c0;
+}
+
+.dislike:hover {
+  background-color: #aaaaaa;
+}
+
+.pet-bio {
+  margin-top: -20px;
+}
+
+.pet-bio > ul {
+  width: 30vw;
+  border-radius: 1em;
+  height: auto;
+  padding: 20px 0 20px 3em;
+  color: rgb(69, 69, 69);
+  background-color: rgb(231, 231, 231);
+  list-style-type: none;
+  box-shadow: 2px 2px #aaaaaa;
 }
