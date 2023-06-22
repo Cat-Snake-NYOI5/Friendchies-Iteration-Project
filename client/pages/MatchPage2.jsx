@@ -5,7 +5,7 @@ import { fetchMatches } from "../features/matchSlice";
 import MatchCard2 from "../components/matchCard2.jsx";
 
 const MatchPage = () => {
-  const [matchState, setMatchState] = useState();
+  // const [matchState, setMatchState] = useState();
 
   // const match = useSelector((state) => state.match.matches);
   //console.log("match state", match);
@@ -18,14 +18,13 @@ const MatchPage = () => {
       const result = await axios.get("http://localhost:3000/api/matches/" + id);
       console.log(result);
       dispatch(fetchMatches(result.data));
-      setMatchState([<MatchCard2 />]);
     }
     fetchData();
   }, []);
   return (
     <div>
       <h2>List of Matches</h2>
-      {matchState}
+      <MatchCard2 />
     </div>
   );
 };

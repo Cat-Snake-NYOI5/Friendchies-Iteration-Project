@@ -3,7 +3,7 @@ import axios from "axios";
 
 const initialState = {
   index: 0,
-  matches: [{dog_name }],
+  matches: [{ image_url: '', dog_name :'', biography :'', phone_number : '', owner_name : '', zip : '', breed : '', age :'', gender :'', size :'' }],
 };
 
 // export const fetchDogs = createAsyncThunk('ACTION TYPE', () => {
