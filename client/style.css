@@ -4,17 +4,19 @@
   padding: 0;
 }
 
-.card {
+/* .card {
 }
 
 .swipeCardIm {
-}
+} */
 
 /* Body style */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
+  line-height: 1.3em;
 }
 
 body {
@@ -25,9 +27,9 @@ body {
 .logo {
   display: block;
   font-size: 60px;
-  padding-bottom: 150px;
-  /* width: 200px;
-  height: auto; */
+  margin-bottom: 150px;
+  width: 50vh;
+  height: auto;
 }
 
 /* Login style */
@@ -35,7 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
   align-items: center;
 }
 
@@ -70,4 +72,102 @@ body {
   color: white;
   font-size: 14px;
   border-radius: 12px;
+}
+
+/* Nav bar */
+
+.nav-bar {
+  display: flex;
+  background: black;
+  height: 5vh;
+  justify-content: flex-end;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav > a {
+  color: white;
+  padding: 0 30px 0 0;
+  border: none;
+  text-decoration: none;
+}
+
+/* swipe profile */
+
+.container {
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.pet-name {
+  font-size: 4rem;
+  padding-bottom: 40px;
+}
+
+.profile-pic > img {
+  width: 40vw;
+  /* border-radius: 1em; */
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+  width: 50vw;
+  padding-top: 20px;
+}
+
+.btn-container > button {
+  width: 80px;
+  height: 80px;
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.goBack,
+.goForward {
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+.like,
+.dislike {
+  font-size: 2em;
+  font-weight: 10;
+}
+
+.like {
+  background-color: rgb(255, 137, 101);
+}
+
+.dislike {
+  background-color: rgb(146, 146, 146);
+}
+
+.pet-bio {
+  margin-top: -20px;
+}
+
+.pet-bio > ul {
+  width: 30vw;
+  border-radius: 1em;
+  height: auto;
+  padding: 20px 0 20px 7em;
+  color: rgb(69, 69, 69);
+  background-color: rgb(231, 231, 231);
+  list-style-type: none;
+  box-shadow: 2px 2px #aaaaaa;
 }

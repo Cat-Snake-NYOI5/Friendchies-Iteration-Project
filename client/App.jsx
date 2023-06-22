@@ -4,7 +4,7 @@ import SignupPage from './pages/SignupPage.jsx';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
 import SwipePage from './pages/SwipePage.jsx';
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import SwipeComponent from './components/swipeComponent.jsx';
 
@@ -13,32 +13,34 @@ const App = () => {
 
   return (
     <div>
-      <Navbar></Navbar>
+      <div className="nav-bar">
+        <Navbar></Navbar>
+      </div>
+
       <div>
-      <Routes>
-        <Route
-          path="/"
-          element={user != null ?  <SwipePage /> : <LoginPage />}
-        ></Route>
-        <Route
-          path="/signup"
-          element={<SignupPage></SignupPage>}
-        ></Route>
-        <Route
-          path="/swipe"
-          element={<SwipePage></SwipePage>}
-        ></Route>
+        <Routes>
+          <Route
+            path="/"
+            element={user != null ? <SwipePage /> : <LoginPage />}
+          ></Route>
+          <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
+          <Route path="/swipe" element={<SwipePage></SwipePage>}></Route>
         </Routes>
       </div>
-    </div>)
-}
-      {/*// <div>
+    </div>
+  );
+};
+{
+  /*// <div>
       //   {user != null ? <SwipePage2 /> : <LoginPage />}
-      // </div></> */}
-  {/* // return (
+      // </div></> */
+}
+{
+  /* // return (
   //   <div>
   //     <LoginPage />
   //   </div>
-  // ); */}
+  // ); */
+}
 
 export default App;
