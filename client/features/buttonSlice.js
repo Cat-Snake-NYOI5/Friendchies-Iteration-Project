@@ -2,7 +2,19 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   index: 0,
-  potentialmatches: [],
+  potentialmatches: [{
+    dog_name:'',
+    owner_name:'',
+    zip:'',
+    breed:'',
+    age:'',
+    gender:'',
+    image_url:'',
+    isfixed:'',
+    size:'',
+    biography:'',
+    id:''
+  }],
 
 }
 

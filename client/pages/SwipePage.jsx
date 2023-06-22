@@ -7,7 +7,7 @@ import SwipeComponent from "../components/swipeComponent.jsx";
 // import { ACTION } from '../features/matchSlice'
 
 const SwipePage = () => {
-  const [swipe, setSwipe] = useState('');
+  // const [swipe, setSwipe] = useState('');
   //use useselctor to subscribe to element from state
   const id = useSelector((state) => state.user.user.id);
   const dispatch = useDispatch();
@@ -18,7 +18,6 @@ const SwipePage = () => {
       console.log(result.data);
       //dispatch(action(payload))
       dispatch(fetchData(result.data));
-      setSwipe([<SwipeComponent/>])
     }
     catch (err) {
       console.log(err)
@@ -28,7 +27,7 @@ const SwipePage = () => {
   
   return (
     <div>
-     {swipe}
+     <SwipeComponent/>
       </div>
  )
 }
