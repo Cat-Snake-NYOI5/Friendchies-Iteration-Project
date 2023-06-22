@@ -11,7 +11,7 @@ const SwipePage = () => {
   //use useselctor to subscribe to element from state
   const id = useSelector((state) => state.user.user.id);
   const dispatch = useDispatch();
-  useEffect(async () => {
+  const myFunction = async () => {
     try {
       const result = await axios.get('http://localhost:3000/swipe/' + id);
       console.log(result);
@@ -22,6 +22,10 @@ const SwipePage = () => {
     catch (err) {
       console.log(err)
     }
+  }
+  
+    useEffect(() => {
+      myFunction();
   }, []);
 
   
