@@ -10,7 +10,7 @@ const Navbar = (props) => {
     <nav className="nav">
     {(!user || user.loggedIn==false) &&<Link to='/signup'>Sign Up</Link>}
       {user && user.loggedIn==true && <Link to='/swipe'>Swipe</Link>}
-      {user && user.loggedIn==true && <Link to='/match'>match</Link>}
+      {user && user.loggedIn==true && <Link to='/match'>Match</Link>}
       {(!user || user.loggedIn!=true) && <Link to='/'>Login</Link>}
 
     </nav>
