@@ -19,6 +19,8 @@ export default function LoginPage() {
       const result = await axios.post('http://localhost:3000/api/user/login', {
         username: name,
         password: password,
+      }, {
+        withCredentials: true,
       });
       //only dispatch to redux if successful login
       if (result) {

@@ -10,8 +10,7 @@ matchController.getMatch = async (req, res, next) => {
     FROM Profile
     LEFT JOIN Viewed
     ON Profile.id = Viewed.receiver_id OR Profile.id= Viewed.giver_id
-    WHERE Viewed.receiver_id = $1 AND Viewed.liked = 'true' AND NOT Profile.id = $1 OR Viewed.giver_id = $1 AND Viewed.liked = 'true' AND NOT Profile.id = $1
-    GROUP BY id`
+    WHERE Viewed.receiver_id = $1 AND Viewed.liked = 'true' AND NOT Profile.id = $1 OR Viewed.giver_id = $1 AND Viewed.liked = 'true' AND NOT Profile.id = $1`
     const listofMatches = await db.query(getAllMatches, params);
     console.log(listofMatches);
     res.locals.listofMatches = listofMatches.rows;

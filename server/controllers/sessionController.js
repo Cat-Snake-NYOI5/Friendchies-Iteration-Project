@@ -2,7 +2,6 @@ const sessionController = {};
 
 // verify if a cookie exists, if it does then move on. Otherwise direct them to the sign up page. 
 sessionController.isLoggedIn = function (req, res, next) {
-  console.log(req.cookies.ssid, "req.cookies")
   if (req.cookies.ssid) {
     req.session.isLoggedIn = true;
     return next()
