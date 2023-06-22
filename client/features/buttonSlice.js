@@ -14,10 +14,20 @@ const buttonSlice = createSlice({
       state.potentialmatches = action.payload;
     },
     goBack (state, action) {
-
+      if (state.index > 0) {
+        state.index -= 1;
+      }
+      else {
+        state.index = state.potentialmatches.length-1;
+      }
     },
-    goForward (state, action) {
-
+    goForward(state) {
+      if (state.index < state.potentialmatches.length-1) {
+        state.index += 1;
+      }
+      else {
+        state.index = 0;
+      }
     },
     dislike (state, action) {
 
