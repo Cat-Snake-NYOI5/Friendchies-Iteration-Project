@@ -6,7 +6,7 @@ const sessionController = require('../controllers/sessionController');
 
 router.post(
   '/signup',
-  userController.verifyUser,
+  userController.createUser,
   cookieController.setCookie,
   sessionController.isLoggedIn,
   (req, res) => {
@@ -17,9 +17,9 @@ router.post(
 // router.post('/', userController.verifyUser, cookieController.setCookie, sessionController.isLoggedIn, (req, res) => {
 //   res.status(200).json(res.locals.user);
 // })
-router.post('/login', userController.verifyUser, (req, res) => {
-  res.status(200).json(res.locals.user);
-});
+// router.post('/login', userController.verifyUser, (req, res) => {
+//   res.status(200).json(res.locals.user);
+// });
 
 router.post(
   '/login',
