@@ -50,7 +50,6 @@ app.use("/api/swipe", swipeRouter);
 =======
 
 app.use("/swipe", swipeRouter);
->>>>>>> dev
 
 // app.use("/createprofile", createProfileRouter);
 
