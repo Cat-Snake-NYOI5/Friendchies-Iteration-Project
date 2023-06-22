@@ -9,6 +9,7 @@ const user = useSelector(selectUser);
     <nav>
     {!user && <Link to='/signup'>Sign Up</Link>}
       {user && <Link to='/swipe'></Link>}
+      {user && <Link to='/match'></Link>}
       {!user && <Link to='/'>Login</Link>}
     </nav>
   )
