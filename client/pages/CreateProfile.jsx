@@ -16,15 +16,12 @@ import {
 } from '../features/createProfileSlice';
 import '../style.css';
 import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function userInput() {
   const dispatch = useDispatch();
-  // const dogNameValue = useSelector((state) => state.createProfile.dog_name);
-  // const ownerNameValue = useSelector((state) => state.createProfile.owner_name);
-  // const phoneNum = useSelector((state) => state.createProfile.phone_number);
-  // const onSubmit = (data) => {
-  //   dispatch(createProf(data));
-  // };
+  const navigate = useNavigate();
+
   const nameDog = useSelector((state) => state.createProfile.dog_name);
   const nameOwner = useSelector((state) => state.createProfile.owner_name);
   const zipC = useSelector((state) => state.createProfile.zip);
@@ -40,8 +37,6 @@ export default function userInput() {
   const handleChange = async (e) => {
     e.preventDefault();
     // console.log('I am here testing create profile')
-
-
     try {
       // console.log('this is dog name', id)
 
@@ -74,11 +69,14 @@ export default function userInput() {
         dispatch(fixed({ isfixed: fixedDog }));
         dispatch(biography({ biography: bioDog }));
         // id: result.data,
+        navigate('/swipe')
+
       }
     } catch (error) {
       console.log('This is an error', error);
     }
   };
+
 
   return (
     <div className="login">
@@ -102,7 +100,7 @@ export default function userInput() {
           onChange={(e) => dispatch(zip(e.target.value))}
         />
         <input
-          type='string'
+          type='text'
           placeholder='Breed'
           onChange={(e) => dispatch(breed(e.target.value))}
         />
@@ -133,7 +131,7 @@ export default function userInput() {
         />
         <input
           type='boolean'
-          placeholder='Fixed?'
+          placeholder='Fixed? True/False'
           onChange={(e) => dispatch(fixed(e.target.value))}
         />
         <input
