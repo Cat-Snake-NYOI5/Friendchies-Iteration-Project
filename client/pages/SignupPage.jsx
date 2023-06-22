@@ -17,8 +17,7 @@ export default function SignupPage() {
         }, {
             withCredentials: true,
         })
-        console.log(response);
-        if (response) {
+        if (response.data) {
             dispatch(
                 login({
                     name: userVal,
