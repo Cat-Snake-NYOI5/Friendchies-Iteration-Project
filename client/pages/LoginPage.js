@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { login } from '../features/userSlice';
-import '../style.css';
-import axios from 'axios';
-import logo from '../img/logo.png';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../features/userSlice";
+import "../style.css";
+import axios from "axios";
+import logo from "../img/logo.png";
 
 export default function LoginPage() {
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
 
@@ -16,12 +16,16 @@ export default function LoginPage() {
 
     //post request to database
     try {
-      const result = await axios.post('http://localhost:3000/api/user/login', {
-        username: name,
-        password: password,
-      }, {
-        withCredentials: true,
-      });
+      const result = await axios.post(
+        "http://localhost:3000/api/user/login",
+        {
+          username: name,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
       //only dispatch to redux if successful login
       if (result) {
         dispatch(
@@ -34,7 +38,12 @@ export default function LoginPage() {
         );
       }
     } catch (error) {
-      console.log('Login failed', error);
+      dispatch(
+        login({
+          loggedIn: false,
+        })
+      );
+      console.log("Login failed", error);
     }
   };
 
