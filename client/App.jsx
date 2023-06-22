@@ -6,6 +6,7 @@ import { selectUser } from './features/userSlice';
 import SwipePage from './pages/SwipePage.jsx';
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './Navbar.jsx';
+import CreateProfile from './pages/CreateProfile.jsx';
 
 const App = () => {
   const user = useSelector(selectUser);
@@ -26,6 +27,10 @@ const App = () => {
         <Route
           path="/swipe"
           element={<SwipePage></SwipePage>}
+        ></Route>
+        <Route
+          path="/createprofile"
+          element={<CreateProfile></CreateProfile>}
         ></Route>
         </Routes>
       </div>

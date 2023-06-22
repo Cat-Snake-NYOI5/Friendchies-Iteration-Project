@@ -38,17 +38,26 @@ app.use("/", cookieController.setCookie, express.static(path.join(__dirname, "..
 
 
 
-app.use("api/swipe", swipeRouter);
+// app.use("api/swipe", swipeRouter);
+
+// app.use("/createprofile", createProfileRouter);
+
+// app.use("/api/user", userRouter);
+
+// app.use("/api/matches", matchRouter);
+
+
+//
+// //
+app.use('/swipe', swipeRouter);
 
 app.use("/createprofile", createProfileRouter);
 
-app.use("/api/user", userRouter);
+app.use('/api/user', userRouter);
 
-app.use("/api/matches", matchRouter);
+app.use('/api/matches', matchRouter);
 
 
-
-// Add this line to include the router
 app.use("/api", router);
 
 // serve index.html
