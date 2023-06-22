@@ -19,12 +19,9 @@ export default function LoginPage() {
         username: name,
         password: password,
       }, {
-        // headers: {
-        //   "Access-Control-Allow-Credentials": true
-        // },
         withCredentials: true,
       });
-      //only dispatch to redux if successful login 'http://localhost:3000/'
+      //only dispatch to redux if successful login
       if (result) {
         dispatch(
           login({
