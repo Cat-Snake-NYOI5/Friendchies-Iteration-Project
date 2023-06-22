@@ -6,7 +6,7 @@ import { selectUser } from './features/userSlice';
 import SwipePage from './pages/SwipePage.jsx';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
-import SwipeComponent from './components/swipeComponent.jsx';
+import MatchPage from './pages/MatchPage2.jsx';
 
 const App = () => {
   const user = useSelector(selectUser);
@@ -18,13 +18,25 @@ const App = () => {
       </div>
 
       <div>
-        <Routes>
-          <Route
-            path="/"
-            element={user != null ? <SwipePage /> : <LoginPage />}
+
+      <Routes>
+        <Route
+          path="/"
+          element={user != null ?  <SwipePage /> : <LoginPage />}
+        ></Route>
+        <Route
+          path="/signup"
+          element={<SignupPage></SignupPage>}
+        ></Route>
+        <Route
+          path="/swipe"
+          element={ user? <SwipePage></SwipePage>: <LoginPage /> }
           ></Route>
-          <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
-          <Route path="/swipe" element={<SwipePage></SwipePage>}></Route>
+           <Route
+          path="/match"
+          element={ user != null? <MatchPage/>: <LoginPage /> }
+        ></Route>
+
         </Routes>
       </div>
     </div>

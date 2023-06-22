@@ -6,10 +6,13 @@ import { selectUser } from './features/userSlice';
 const Navbar = (props) => {
   const user = useSelector(selectUser);
   return (
+
     <nav className="nav">
-      {!user && <Link to="/signup">Sign Up</Link>}
-      {user && <Link to="/swipe"></Link>}
-      {!user && <Link to="/">Login</Link>}
+    {!user && <Link to='/signup'>Sign Up</Link>}
+      {user && <Link to='/swipe'></Link>}
+      {user && <Link to='/match'></Link>}
+      {!user && <Link to='/'>Login</Link>}
+
     </nav>
   );
 };
