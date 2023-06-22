@@ -1,34 +1,54 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
+import { useState } from 'react';
+import { goBack, goForward } from '../features/buttonSlice'
+import axios from 'axios';
 
 const SwipeComponent = () => {
-    const potentialmatches = useSelector(state => state.button.potentialmatches);
-    const index = useSelector(state => state.button.index);
-    const { dog_name, owner_name, zip, breed, age, gender, image_url, isfixed, size, biography } = potentialmatches[index];
-    console.log('THIS IS THE POTENTIAL MATCHES AT INDEX', potentialmatches[index]);
-    return (
-      <div className="container">
-        <div className="profile-pic">
+  const dispatch = useDispatch();
+  const potentialmatches = useSelector(state => state.button.potentialmatches);
+  const index = useSelector(state => state.button.index);
+  const id = useSelector(state => state.user.user.id);
+  // console.log('POTENTIAL MATCHES', potentialmatches);
+  const { dog_name, owner_name, zip, breed, age, gender, image_url, isfixed, size, biography } = potentialmatches[index];
+  // console.log('THIS IS THE POTENTIAL MATCHES AT INDEX', potentialmatches[index]);
+  // console.log(index);
+  const handleDislike = async () => {
+    //dislike - > send to backend
+
+    // const result = await axios.post('http://localhost:3000/swipe/like', {giver_id: id, receiver_id:});
+  }
+  return (
+     <div className="container">
+      <div className="profile-pic">
+        <img src={image_url}></img>
         </div>
         <div className="pet-name">
-  
+        {dog_name}
         </div>
-        <div className="pet-bio">
-  
+      <div className="pet-bio">
+        {biography}
+        {breed}
+        {owner_name}
+        {zip}
+        {age}
+        {gender}
+        {isfixed}
+        {size}
         </div>
         <button
           className="goBack"
-          onClick={ () => handleBackward(FILLER)}
+          onClick={ () => dispatch(goBack())}
           > previous </button>
         <button className="goForward"
-          onClick={() => handleForward(FILLER)}
+          onClick={()=>dispatch(goForward())}
           >next</button>
         <button
           className="dislike"
-          onClick={() => handleDislike(FILLER)}
+          onClick={() => handleDislike()}
           >dislike</button>
         <button className="like"
-          onClick={() => handleLike(FILLER)}
+          onClick={() => handleLike()}
           >like</button>
         </div>
     )
