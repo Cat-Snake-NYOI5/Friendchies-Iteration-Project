@@ -34,7 +34,7 @@ const App = () => {
             }
           ></Route>
           console.log(user);
-          <Route path="/signup" element={user != null  && loggedIn === true ? <CreateProfile/> :<SignupPage/>}></Route>
+          <Route path="/signup" element={user != null ? <CreateProfile/> :<SignupPage/>}></Route>
           <Route
             path="/swipe"
             element={user ? <SwipePage></SwipePage> : <LoginPage />}
@@ -42,6 +42,10 @@ const App = () => {
           <Route
             path="/match"
             element={user != null ? <MatchPage /> : <LoginPage />}
+          ></Route>
+           <Route
+            path="/createprofile"
+            element={<CreateProfile/>}
           ></Route>
         </Routes>
       </div>
