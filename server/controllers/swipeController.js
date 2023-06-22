@@ -7,13 +7,7 @@ swipeController.getdogs = (req, res, next) => {
   console.log('IN CORRECT CONTROLLER')
   const id = [req.params.id];
 
-  //the table name may need to be in title Profile
-
-  // const getdogs = `SELECT DISTINCT dog_name, owner_name, id, zip, breed, size, age, phone_number, gender, image_url FROM profile 
-  // LEFT OUTER JOIN viewed 
-  // ON profile.id = giver_id `
   const getdogs = `SELECT * FROM profile WHERE ID NOT IN (SELECT RECEIVER_ID FROM viewed WHERE GIVER_ID = $1)`
-  // WHERE viewed.giver_id != $1`;
 
   db.query(getdogs, id)
     .then((data) => {
@@ -30,8 +24,14 @@ swipeController.likeDog = (req, res, next) => {
   const { giver_id, receiver_id } = req.body;
   const values = [giver_id, receiver_id, true];
   //the table name may need to be in title Profile
-  const likeDog = `INSERT INTO Viewed (giver_id,receiver_id,liked)
-  VALUES ($1, $2, $3)`;
+  //original
+  // const likeDog = `INSERT INTO Viewed (giver_id,receiver_id,liked)
+  // VALUES ($1, $2, $3)`;
+
+  //modified
+  const likeDog = `INSERT INTO viewed(giver_id, receiver_id, liked)
+  SELECT $1, $2, $3 WHERE NOT EXISTS (SELECT * FROM Viewed WHERE giver_id = $1 AND receiver_id = $2)`;
+
   db.query(likeDog, values)
     .then(() => {
       res.locals.listOfDogs = { like: true };
@@ -45,8 +45,10 @@ swipeController.likeDog = (req, res, next) => {
 
 swipeController.dislikeDog = (req, res, next) => {
   const { giver_id, receiver_id } = req.body;
-  const dislikeDog = `INSERT INTO Viewed (giver_id,receiver_id,liked)
-  VALUES ($1, $2, $3)`;
+  // const dislikeDog = `INSERT INTO Viewed (giver_id,receiver_id,liked)
+  // VALUES ($1, $2, $3)`;
+  const dislikeDog = `INSERT INTO viewed(giver_id, receiver_id, liked)
+  SELECT $1, $2, $3 WHERE NOT EXISTS (SELECT * FROM Viewed WHERE giver_id = $1 AND receiver_id = $2)`
   db.query(dislikeDog, [giver_id, receiver_id, false])
     .then(() => {
       res.locals.listOfDogs = { dislike: true };
