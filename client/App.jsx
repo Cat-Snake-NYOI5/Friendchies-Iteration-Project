@@ -1,16 +1,17 @@
-import React from 'react';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage.jsx';
-import { useSelector } from 'react-redux';
-import { selectUser } from './features/userSlice';
-import SwipePage from './pages/SwipePage.jsx';
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './Navbar.jsx';
-import MatchPage from './pages/MatchPage2.jsx';
-import CreateProfile from './pages/CreateProfile.jsx';
+import React from "react";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage.jsx";
+import { useSelector } from "react-redux";
+import { selectUser } from "./features/userSlice";
+import SwipePage from "./pages/SwipePage.jsx";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./Navbar.jsx";
+import MatchPage from "./pages/MatchPage2.jsx";
+import CreateProfile from "./pages/CreateProfile.jsx";
 
 const App = () => {
   const user = useSelector(selectUser);
+  console.log("user", user);
 
   return (
     <div>
@@ -19,28 +20,29 @@ const App = () => {
       </div>
 
       <div>
-
-      <Routes>
-        <Route
-          exact path="/"
-          element={user != null ?  <SwipePage /> : <LoginPage />}
-        ></Route>
-        <Route
-          path="/signup"
-          element={user != null ?  <CreateProfile/> :<SignupPage></SignupPage>}
-        ></Route>
-        <Route
-          path="/swipe"
-          element={ user? <SwipePage></SwipePage>: <LoginPage /> }
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              user === null ? (
+                <LoginPage />
+              ) : user.loggedIn === true ? (
+                <SwipePage />
+              ) : (
+                <SignupPage />
+              )
+            }
           ></Route>
-           <Route
-          path="/match"
-          element={ user != null? <MatchPage/>: <LoginPage /> }
-        ></Route>
-        {/* <Route
-          path="/createprofile"
-          element={<CreateProfile></CreateProfile>}
-        ></Route> */}
+          <Route path="/signup" element={user != null && user.loggedIn === true ?  <CreateProfile/> :<SignupPage></SignupPage>}></Route>
+          <Route
+            path="/swipe"
+            element={user ? <SwipePage></SwipePage> : <LoginPage />}
+          ></Route>
+          <Route
+            path="/match"
+            element={user != null ? <MatchPage /> : <LoginPage />}
+          ></Route>
         </Routes>
       </div>
     </div>

@@ -135,7 +135,7 @@ body {
   border: none;
   border-radius: 100%;
   cursor: pointer;
-  padding-top: 20px;
+  /* padding-top: 20px; */
 }
 
 .goBack,
