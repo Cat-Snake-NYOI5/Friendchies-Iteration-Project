@@ -1,7 +1,8 @@
-import {createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = {
+  index: 0,
   matches: [],
 };
 
@@ -12,14 +13,21 @@ const initialState = {
 // });
 
 const matchSlice = createSlice({
-  name: 'matches',
+  name: "match",
   initialState,
   reducers: {
     fetchMatches: (state, action) => {
       state.matches = action.payload;
     },
+    // deleteMatches: (state, action) => {
+    //   //state.matches = action.payload;
+    //   if (state.index > 0) {
+    //     state.index -= 1;
+    //   }
+    //},
   },
 });
 
 export const { fetchMatches } = matchSlice.actions;
+
 export default matchSlice.reducer;
