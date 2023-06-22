@@ -2,13 +2,14 @@ const express = require("express");
 const path = require("path");
 const userRouter = require("./routes/userRoute");
 const swipeRouter = require("./routes/swipeRouter");
-
+const dbModel = require('./dbModel');
 const createProfileRouter = require("./routes/createProfileRouter");
 
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const cookieController = require("./controllers/cookieController");
-
+const sessionController = require("./controllers/sessionController");
+const userController = require("./controllers/userController");
 
 const matchController = require("./controllers/matchController");
 const router = express.Router();
@@ -25,6 +26,7 @@ app.use(cookieParser());
 // session https://www.npmjs.com/package/connect-pg-simple
 app.use(session({
   store: new (require('connect-pg-simple')(session))({
+    pool: dbModel.pool,
   }),
   secret: 'JWVduNcvPd9wNF5lt/rQc7cv4', // equivalent to a random SALT
   resave: false,
@@ -34,19 +36,22 @@ app.use(session({
 
 // Build file
 app.use("/build", express.static(path.join(__dirname, "../build")));
-app.use("/", cookieController.setCookie, express.static(path.join(__dirname, "../index.html")));
+app.use("/", express.static(path.join(__dirname, "../index.html")));
 
+// app.post('/login', userController.verifyUser, cookieController.setCookie, sessionController.isLoggedIn, (req, res) => {
+//   res.redirect(302, '/swipe')
+// })
 
-
-app.use("api/swipe", swipeRouter);
+// app.post('/signup', userController.verifyUser, cookieController.setCookie, sessionController.isLoggedIn, (req, res) => {
+//   res.redirect(302, '/swipe')
+// })
+app.use("/api/swipe", swipeRouter);
 
 app.use("/createprofile", createProfileRouter);
 
 app.use("/api/user", userRouter);
 
 app.use("/api/matches", matchRouter);
-
-
 
 // Add this line to include the router
 app.use("/api", router);
@@ -56,9 +61,10 @@ app.use("/api", router);
 //   return res.status(200).json(res.locals.matches);
 // });
 
-router.get("/dogs", matchController.getAllDogs, (req, res) => {
-  return res.status(200).json(res.locals.listOfDogs);
-});
+// this should be app instead of router? 
+// app.get("/dogs", matchController.getAllDogs, (req, res) => {
+//   return res.status(200).json(res.locals.listOfDogs);
+// });
 
 // app.get('/*', (req, res) => {
 //     res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
@@ -69,6 +75,7 @@ app.use((req, res) =>
 );
 
 app.use((err, req, res, next) => {
+  console.log("ERR", err);
   const defaultErr = {
     log: "Express error handler caught unknown middleware error",
     status: 500,
