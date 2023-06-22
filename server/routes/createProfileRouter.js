@@ -7,7 +7,6 @@ const createProfileRouter = express.Router();
 createProfileRouter.post(
   "/createprofile", // changed from '/'
   createProfileController.newProfile,
-  swipeController.likeDog,
   (req, res) => {
     return res.status(200).json(res.locals.createProfile);
   }
