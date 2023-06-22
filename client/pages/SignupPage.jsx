@@ -1,3 +1,5 @@
+
+import logo from "../img/logo.png";
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -27,14 +29,28 @@ export default function SignupPage() {
         }
     };
 
-    return (
-        <div>
-            <h1>Sign Up</h1>
-            <label htmlFor="username">Username</label>
-            <input id="username" value={userVal} onChange={(e) => setUserVal(e.target.value)} />
-            <label htmlFor="password">Password</label>
-            <input type="password" value={passVal} onChange={(e) => setPassVal(e.target.value)} />
-            <button id="signup-button" onClick={signup}>Sign Up</button>
-        </div>
-    )
+
+  return (
+    <div className="login">
+      <img className="logo" src={logo} />
+      <h1>Sign Up</h1>
+      <form className="login-form">
+        <label htmlFor="username">Username</label>
+        <input
+          id="username"
+          value={userVal}
+          onChange={(e) => setUserVal(e.target.value)}
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          value={passVal}
+          onChange={(e) => setPassVal(e.target.value)}
+        />
+        <button className="submit-btn" id="signup-button" onClick={signup}>
+          Sign Up
+        </button>
+      </form>
+    </div>
+  );
 }
