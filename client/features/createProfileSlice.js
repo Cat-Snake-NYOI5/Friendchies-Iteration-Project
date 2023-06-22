@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+// import { createAsyncThunk } from '@reduxjs/toolkit';
+// import axios from 'axios';
 
 // export const createProf = createAsyncThunk(
 //   '/createprofile',
@@ -46,17 +46,17 @@ import axios from 'axios';
 // );
 
 const initialState = {
-  dog_name: '',
-  owner_name: '',
-  zip: '',
-  breed: '',
-  size: '',
-  age: '',
-  phone_number: '',
-  gender: '',
-  image_url: '',
-  isfixed: '',
-  biography: ''
+  dog_name: 'dog name',
+  owner_name: 'owner name',
+  zip: 123,
+  breed: 'breed',
+  size: 'medium',
+  age: 3,
+  phone_number: 2343241,
+  gender: 'mixed',
+  image_url: 'dfa',
+  isfixed: 'true',
+  biography: 'sdafjl;k;j;',
 };
 
 export const createProfile = createSlice({
@@ -95,13 +95,24 @@ export const createProfile = createSlice({
       state.isfixed = action.payload;
     },
     biography: (state, action) => {
-      state.biography = action.payload
-    }
-  }
-},
-);
+      state.biography = action.payload;
+    },
+  },
+});
 
-export const { dogName, ownerName, zip, breed, size, age, phone, gender, image, fixed, biography } = createProfile.actions;
+export const {
+  dogName,
+  ownerName,
+  zip,
+  breed,
+  size,
+  age,
+  phone,
+  gender,
+  image,
+  fixed,
+  biography,
+} = createProfile.actions;
 
 // export const selectUser = (state) => state.user.user;
 
