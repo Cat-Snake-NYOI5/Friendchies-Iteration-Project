@@ -98,10 +98,12 @@ body {
 /* swipe profile */
 
 .container {
-  padding-top: 80px;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 60%;
 }
 
 .card-container {
@@ -109,7 +111,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
 }
 
 .pet-name {
@@ -118,7 +119,7 @@ body {
 }
 
 .profile-pic > img {
-  width: 40vw;
+  width: 30vw;
   /* border-radius: 1em; */
 }
 
@@ -135,12 +136,19 @@ body {
   border: none;
   border-radius: 100%;
   cursor: pointer;
+  padding-top: 20px;
 }
 
 .goBack,
 .goForward {
+  background: none;
   font-weight: bolder;
   font-size: 30px;
+}
+
+.goBack:hover,
+.goForward:hover {
+  color: #aaaaaa;
 }
 
 .like,
@@ -152,9 +160,16 @@ body {
 .like {
   background-color: rgb(255, 137, 101);
 }
+.like:hover {
+  background-color: rgb(252, 97, 50);
+}
 
 .dislike {
   background-color: rgb(146, 146, 146);
+}
+
+.dislike:hover {
+  background-color: #aaaaaa;
 }
 
 .pet-bio {
