@@ -22,7 +22,7 @@ const App = () => {
 
       <Routes>
         <Route
-          path="/"
+          exact path="/"
           element={user != null ?  <SwipePage /> : <LoginPage />}
         ></Route>
         <Route

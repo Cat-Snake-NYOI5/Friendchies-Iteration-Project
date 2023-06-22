@@ -3,7 +3,7 @@ import axios from "axios";
 
 const initialState = {
   index: 0,
-  matches: [],
+  matches: [{dog_name }],
 };
 
 // export const fetchDogs = createAsyncThunk('ACTION TYPE', () => {
