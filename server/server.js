@@ -42,15 +42,8 @@ app.use("/", express.static(path.join(__dirname, "../index.html")));
 //   res.redirect(302, '/swipe')
 // })
 
-<<<<<<< HEAD
-// app.post('/signup', userController.verifyUser, cookieController.setCookie, sessionController.isLoggedIn, (req, res) => {
-//   res.redirect(302, '/swipe')
-// })
-app.use("/api/swipe", swipeRouter);
-=======
 
 app.use("/swipe", swipeRouter);
->>>>>>> dev
 
 // app.use("/createprofile", createProfileRouter);
 

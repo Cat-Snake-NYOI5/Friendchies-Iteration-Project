@@ -9,7 +9,10 @@ router.post('/signup', userController.verifyUser, cookieController.setCookie, se
   res.status(200).json(res.locals.user);
 })
 
-router.post('/', userController.verifyUser, cookieController.setCookie, sessionController.isLoggedIn, (req, res) => {
+// router.post('/login', userController.verifyUser, cookieController.setCookie, sessionController.isLoggedIn, (req, res) => {
+//   res.status(200).json(res.locals.user);
+// })
+router.post('/login', userController.verifyUser, (req, res) => {
   res.status(200).json(res.locals.user);
 })
 module.exports = router;
