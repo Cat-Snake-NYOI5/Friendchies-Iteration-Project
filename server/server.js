@@ -26,9 +26,9 @@ app.use("/", express.static(path.join(__dirname, "../index.html")));
 
 
 
-app.use("api/swipe", swipeRouter);
+app.use("/swipe", swipeRouter);
 
-app.use("/createprofile", createProfileRouter);
+// app.use("/createprofile", createProfileRouter);
 
 app.use("/api/user", userRouter);
 

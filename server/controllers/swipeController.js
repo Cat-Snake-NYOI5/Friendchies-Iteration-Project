@@ -4,6 +4,7 @@ const db = require("../dbModel.js");
 const swipeController = {};
 
 swipeController.getdogs = (req, res, next) => {
+  console.log('IN CORRECT CONTROLLER')
   const id = [req.params.id];
 
   //the table name may need to be in title Profile
