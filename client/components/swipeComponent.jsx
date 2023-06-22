@@ -44,35 +44,60 @@ const SwipeComponent = () => {
     }
   };
   return (
-    <div className="container">
-      <div className="card-container">
-        <div className="pet-name">{dog_name}</div>
-        <div className="profile-pic">
+    <div className='container'>
+      <div className='card-container'>
+        <div className='pet-name'>{dog_name}</div>
+        <div className='profile-pic'>
           <img src={image_url}></img>
         </div>
-        <div className="pet-bio">
+        <div className='pet-bio'>
           <ul>
-            <li>{biography}</li>
-            <li>{breed}</li>
-            <li>{owner_name}</li>
-            <li>{zip}</li>
-            <li>{age}</li>
-            <li>{gender}</li>
-            <li>{isfixed}</li>
-            <li>{size}</li>
+            <li>
+              <strong>Bio: &ensp;</strong>
+              {biography}
+            </li>
+            <li>
+              <strong>Age: &ensp;</strong>
+              {age}
+            </li>
+            <li>
+              <strong>Breed: &ensp;</strong>
+              {breed}
+            </li>
+            <li>
+              <strong>Owner Name: &ensp;</strong>
+              {owner_name}
+            </li>
+            <li>
+              <strong>Zipcode: &ensp;</strong>
+              {zip}
+            </li>
+            <li>
+              <strong>Gender: &ensp;</strong>
+              {gender}
+            </li>
+            <li>
+              <strong>Is Fixed: &ensp;</strong>
+              {isfixed}
+            </li>
+            <li>
+              <strong>Size: &ensp;</strong>
+              {size}
+            </li>
           </ul>
         </div>
-        <div className="btn-container">
-          <button className="goBack" onClick={() => dispatch(goBack())}>
-            {'<'}
+        <div className='btn-container'>
+          <button className='goBack' onClick={() => dispatch(goBack())}>
+            {'<'} {'🐾'}
           </button>
-          <button className="dislike" onClick={() => handleDislike()}>
+          <button className='dislike' onClick={() => handleDislike()}>
             💔
           </button>
-          <button className="like" onClick={() => handleLike()}>
+          <button className='like' onClick={() => handleLike()}>
             ❤️
           </button>
-          <button className="goForward" onClick={() => dispatch(goForward())}>
+          <button className='goForward' onClick={() => dispatch(goForward())}>
+            {'🐾'}
             {'>'}
           </button>
         </div>
