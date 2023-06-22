@@ -4,24 +4,19 @@ const userRouter = require("./routes/userRoute");
 const swipeRouter = require("./routes/swipeRouter");
 const dbModel = require('./dbModel');
 const createProfileRouter = require("./routes/createProfileRouter");
+const cors = require("cors");
 
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const cookieController = require("./controllers/cookieController");
-const sessionController = require("./controllers/sessionController");
-const userController = require("./controllers/userController");
 
-const matchController = require("./controllers/matchController");
-const router = express.Router();
 const matchRouter = require("./routes/matchRoute");
 const app = express();
+app.use(cookieParser());
 const PORT = 3000;
-const cors = require("cors");
 
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors());
-app.use(cookieParser());
+app.use(cors({ credentials: true, origin: 'http://localhost:8080' }));
 
 // session https://www.npmjs.com/package/connect-pg-simple
 app.use(session({
@@ -48,23 +43,6 @@ app.use("/swipe", swipeRouter);
 app.use("/api/user", userRouter);
 
 app.use("/api/matches", matchRouter);
-
-// Add this line to include the router
-app.use("/api", router);
-
-// serve index.html
-// router.get('/matches', matchController.getMatches, (req, res) => {
-//   return res.status(200).json(res.locals.matches);
-// });
-
-// this should be app instead of router? 
-// app.get("/dogs", matchController.getAllDogs, (req, res) => {
-//   return res.status(200).json(res.locals.listOfDogs);
-// });
-
-// app.get('/*', (req, res) => {
-//     res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
-// });
 
 app.use((req, res) =>
   res.status(404).send("This is not the page you're looking for...")

@@ -15,25 +15,30 @@ export default function LoginPage() {
 
     //post request to database
     try {
-       const result = await axios.post('http://localhost:3000/api/user/login', {
+      const result = await axios.post('http://localhost:3000/api/user/login', {
         username: name,
         password: password,
+      }, {
+        // headers: {
+        //   "Access-Control-Allow-Credentials": true
+        // },
+        withCredentials: true,
       });
-      //only dispatch to redux if successful login
+      //only dispatch to redux if successful login 'http://localhost:3000/'
       if (result) {
-          dispatch(
-            login({
-              name: name,
-              password: password,
-              id: result.data,
-              loggedIn: true,
-            })
-            );
-          }
-    } catch (error) {
-        console.log('Login failed', error);
+        dispatch(
+          login({
+            name: name,
+            password: password,
+            id: result.data,
+            loggedIn: true,
+          })
+        );
       }
-    };
+    } catch (error) {
+      console.log('Login failed', error);
+    }
+  };
 
   // const registerHandle = (e) => {
   //   console.log(name, password);
