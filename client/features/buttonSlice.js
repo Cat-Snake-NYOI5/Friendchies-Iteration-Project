@@ -30,7 +30,8 @@ const buttonSlice = createSlice({
       }
     },
     dislike (state, action) {
-
+     //take out of potential matches
+      //decrease index by one
     },
     like (state, action) {
 
