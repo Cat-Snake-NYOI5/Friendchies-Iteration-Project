@@ -36,6 +36,8 @@ app.use("/", express.static(path.join(__dirname, "../index.html")));
 // app.post('/login', userController.verifyUser, cookieController.setCookie, sessionController.isLoggedIn, (req, res) => {
 //   res.redirect(302, '/swipe')
 // })
+
+
 app.use("/swipe", swipeRouter);
 
 // app.use("/createprofile", createProfileRouter);
