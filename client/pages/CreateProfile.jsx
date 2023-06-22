@@ -1,56 +1,69 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { dogName, ownerName, zip, breed, size, age, phone, gender, image, fixed, biography } from '../features/createProfileSlice';
 import '../style.css';
 import axios from 'axios';
 
 export default function userInput() {
+  const dispatch = useDispatch();
+
   return (
     <div className='userProfile'>
       <form className='dogName'>
         <input
           type='dogName'
           placeholder='Dog Name'
-          value={dogName}
+          onChange={dispatch(dogName(e.target.value))}
           />
         <input
           type='ownerName'
           placeholder='Owner Name'
-          value={ownerName}
-          />
-        <input
-          type='breed'
-          placeholder='Breed'
-          value={breed}
-          />
-        <input
-          type='size'
-          placeholder='Size'
-          value={size}
-          />
-        <input
-          type='sex'
-          placeholder='Sex'
-          value={sex}
-          />
-        <input
-          type='age'
-          placeholder='Age'
-          value={age}
+          onChange={dispatch(ownerName(e.target.value))}
           />
         <input
           type='zipcode'
           placeholder='Zipcode'
-          value={zipcode}
+          onChange={dispatch(zip((e.target.value)))}
           />
         <input
-          type='image'
-          placeholder='Image'
-          value={image}
+          type='breed'
+          placeholder='Breed'
+          onChange={dispatch(breed((e.target.value)))}
+          />
+        <input
+          type='size'
+          placeholder='Size'
+          onChange={dispatch(size((e.target.value)))}
+          />
+        <input
+          type='age'
+          placeholder='Age'
+          onChange={dispatch(age((e.target.value)))}
           />
         <input
           type='phoneNumber'
           placeholder='Phone Number'
-          value={phoneNumber}
+          onChange={dispatch(phone((e.target.value)))}
+          />
+        <input
+          type='gender'
+          placeholder='Gender'
+          onChange={dispatch(gender((e.target.value)))}
+          />
+        <input
+          type='image'
+          placeholder='Image'
+          onChange={dispatch(image((e.target.value)))}
+          />
+        <input
+          type='isFixed'
+          placeholder='Fixed?'
+          onChange={dispatch(fixed((e.target.value)))}
+          />
+        <input
+          type='biography'
+          placeholder='Biography'
+          onChange={dispatch(biography((e.target.value)))}
           />
 
 
@@ -61,3 +74,6 @@ export default function userInput() {
     </div>
   );
 }
+// send to state onchange via useDispatch
+// check type, send dif action creator e.target.val
+// react forms
