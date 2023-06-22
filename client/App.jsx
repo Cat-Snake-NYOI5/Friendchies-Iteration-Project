@@ -27,7 +27,7 @@ const App = () => {
         ></Route>
         <Route
           path="/signup"
-          element={<SignupPage></SignupPage>}
+          element={user != null ?  <CreateProfile/> :<SignupPage></SignupPage>}
         ></Route>
         <Route
           path="/swipe"
@@ -37,10 +37,10 @@ const App = () => {
           path="/match"
           element={ user != null? <MatchPage/>: <LoginPage /> }
         ></Route>
-        <Route
+        {/* <Route
           path="/createprofile"
           element={<CreateProfile></CreateProfile>}
-        ></Route>
+        ></Route> */}
         </Routes>
       </div>
     </div>

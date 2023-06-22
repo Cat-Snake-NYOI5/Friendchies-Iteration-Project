@@ -23,7 +23,7 @@ const SwipePage = () => {
       console.log(err)
     }
   }
-  
+
     useEffect(() => {
       myFunction();
   }, []);
@@ -32,7 +32,7 @@ const SwipePage = () => {
   return (
     <div>
      <SwipeComponent/>
-      </div>
+    </div>
  )
 }
 
